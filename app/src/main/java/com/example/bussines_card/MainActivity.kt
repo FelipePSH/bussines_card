@@ -9,7 +9,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.*
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -41,6 +47,7 @@ class MainActivity : ComponentActivity() {
                         image = image,
                         jobTitle = "Android Developer"
                     )
+                    Contacts()
                 }
             }
         }
@@ -66,6 +73,32 @@ fun Header(fullName: String, image: Painter, jobTitle: String, modifier: Modifie
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
         )
+    }
+}
+
+@Composable
+fun Contacts(modifier: Modifier = Modifier) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Bottom,
+        modifier = modifier.padding(16.dp).fillMaxWidth()
+    ) {
+        Row(modifier = modifier.padding(6.dp)) {
+            Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = null)
+            Spacer(modifier = Modifier.padding(6.dp))
+            Text(text = "FelipePSH")
+        }
+        Row(modifier = modifier.padding(6.dp)) {
+            Icon(imageVector = Icons.Default.Phone, contentDescription = null)
+            Spacer(modifier = Modifier.padding(6.dp))
+            Text(text = "+61 0419 283 439")
+        }
+        Row(modifier = modifier.padding(6.dp)) {
+            Icon(imageVector = Icons.Default.Email, contentDescription = null)
+            Spacer(modifier = Modifier.padding(6.dp))
+            Text(text = "felipe.au.pereira.santos@gmail.com")
+        }
+
         Spacer(modifier = Modifier.padding(16.dp))
         Text(
             text = "since - 2020",
@@ -74,8 +107,6 @@ fun Header(fullName: String, image: Painter, jobTitle: String, modifier: Modifie
         )
     }
 }
-
-
 
 
 @Preview(showBackground = true)
@@ -88,5 +119,6 @@ fun GreetingPreview() {
             image = image,
             jobTitle = "Pleno Android Developer"
         )
+        Contacts()
     }
 }
